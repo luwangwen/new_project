@@ -12,4 +12,9 @@ public class HelloController {
         NewProjectApplication.LOGGER.info("hello");
         return "index";
     }
+
+    @RequestMapping("/binGame.html")
+    public String toBinGame() {
+        return "binGame";
+    }
 }

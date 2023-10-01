@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <link rel="stylesheet" type="text/css" href="golobal.css">
+    </head>
+    <body>
+        <div id="app">
+            <p id = "time" style="
+                text-align: right;
+            ">倒计时：30</p>
+            <p id="yon" style="
+                height: 15px;
+                position: absolute;
+                left: 8px;
+                top: 0px;
+            "></p>
+            <p>BIN</p> <p id="show" style="
+                position: absolute;
+                left: 200px;
+                top: 31px;
+            "></p>
+            <p>DEC</p> <input type="text" name="DEC" style="
+                position: absolute;
+                left: 200px;
+                top: 82px;
+            ">
+            <button id="finish" style="
+                position: absolute;
+                left: 500px;
+                top: 82px;
+            ">点击确认</button>
+            <button id="reset" style="
+                position: absolute; 
+                right: 5px; 
+            ">重置</button>
+        </div>
+        <script>
+            function random() { 
+                var r_int = Math.floor(Math.random() * 10);
+                paragraph.innerHTML = r_int.toString(2);
+                return r_int;
+            }
+            let paragraph = document.getElementById("show");
+            let input = document.getElementsByTagName("input")[0];
+            let yon = document.getElementById("yon");
+            var button = document.getElementById("finish");
+            let r_int = random();
+            let time = document.getElementById("time");
+            let t = 30;
+            let count = 5;
+            button.addEventListener("click", function() {
+                var inputValue = input.value;
+                console.log(1);
+                if (Number(inputValue) == r_int) {
+                    yon.innerHTML = "恭喜你，答对了！";
+                    count --;
+                    if (count == 0) {
+                        yon.innerHTML = "游戏胜利";
+                    }
+                    console.log(2);
+                } else {
+                    yon.innerHTML = "很遗憾，答错了！";
+                }
+                r_int = random();
+            });
+            document.getElementById("reset").addEventListener("click", function() {
+                console.log(3);
+                location.reload();
+            });
+            setInterval(function() {
+                if (count > 0) {
+                    if (t == 0) {
+                        yon.innerHTML = "超时了！";
+                    } else {
+                        time.innerHTML = "倒计时：" + t--;
+                    }
+                }
+            }, 1000);
+        </script>
+    </body>
+</html>
