@@ -3,12 +3,27 @@
     <head>
         <meta charset="UTF-8">
         <title>Title</title>
-        <link rel="stylesheet" type="text/css" href="golobal.css">
+        <link rel="stylesheet" type="text/css" href="../static/golobal.css">
     </head>
     <body>
         <div id="app">
             <h1>hello</h1>
-            <a href="binGame.html">二进制速算</a>
+            <input type="text">
+            <a href="http://127.0.0.1:8080/binGame/" style="
+                position: absolute; 
+                right: 5px; 
+                top: 63px;
+            ">二进制速算</a>
+            <button id = "new" >createUser</button>
         </div>
+        <script src = "../static/ajax.js"></script>
+        <script>
+            const button = document.getElementById("new")
+            let input = document.getElementsByName("input")[0]
+            button.addEventListener("click", () => {
+                const url = "http://127.0.0.1:8080/myindex/new?id=" + input.value
+                ajax(url, "POST").then(res => {console.log(res);}).catch(err => console.log(err))
+            })
+        </script>
     </body>
 </html>
